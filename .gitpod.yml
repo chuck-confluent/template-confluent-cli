@@ -13,3 +13,7 @@ github:
 
 image:
   file: .gitpod.Dockerfile
+
+tasks:
+  - name: start
+    command: confluent local services start
