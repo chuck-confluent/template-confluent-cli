@@ -14,4 +14,4 @@ RUN curl -O https://packages.confluent.io/archive/${CONFLUENT_VERSION_SHORT}/con
     /home/gitpod/confluent-${CONFLUENT_VERSION}/bin/confluent completion bash > ~/.local/share/bash-completion/confluent && \
     echo "source ~/.local/share/bash-completion/ccloud" >> ~/.bashrc && \
     echo "source ~/.local/share/bash-completion/confluent" >> ~/.bashrc && \
-    echo "export PATH=/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH" >> ~/.bashrc
+    echo "export PATH=${JAVA_HOME}/bin:/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH" >> ~/.bashrc
