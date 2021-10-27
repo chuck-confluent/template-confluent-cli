@@ -8,7 +8,7 @@ Template repo for a lab environment with confluent and ccloud CLIs installed. Th
 - Uses Gitpod's default "workspace-full" ubuntu workspace, which includes [a lot of stuff](https://github.com/gitpod-io/workspace-images/blob/master/full/Dockerfile)
   - We could probably slim the image by customizing on top of gitpod/workspace-base. This would decrease image pull time.
 - confluent and ccloud CLIs installed, in PATH, with autocompletion
-- Confluent Platform installed at /home/gitpod/confluent-${CONFLUENT_VERSION}
+- Confluent Platform installed at /home/gitpod/confluent-${CONFLUENT_VERSION}, with all binaries in PATH (e.g. kafka-console-producer, perf tests, kafka-cluster-links, etc)
 - On launch, `confluent local services start` starts all confluent services
 - On launch, two datagen source connectors are automatically started
 
