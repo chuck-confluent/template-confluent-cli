@@ -3,6 +3,7 @@ ARG CONFLUENT_VERSION=6.2.1
 ARG CONFLUENT_VERSION_SHORT=6.2
 
 ENV CONFLUENT_HOME=/home/gitpod/confluent-${CONFLUENT_VERSION}
+SHELL ["/bin/bash", "-c"] 
 
 # Install Confluent CLI and Confluent Cloud CLI, with shell auto completion
 RUN mkdir -p ~/.local/share/bash-completion/ && \
@@ -16,7 +17,7 @@ RUN curl -L --http1.1 https://cnfl.io/ccloud-cli | sudo sh -s -- -b /usr/local/b
     ccloud completion bash > ~/.local/share/bash-completion/ccloud && \
     touch ~/.local/share/bash-completion/confluent && \
     echo "source ~/.local/share/bash-completion/ccloud" >> ~/.bashrc
+RUN source ~/.bashrc
 
-SHELL ["/bin/bash", "--login", "-c"] 
 # Install datagen connector
 RUN  confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:0.5.2
