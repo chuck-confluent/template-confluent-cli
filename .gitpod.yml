@@ -16,7 +16,30 @@ image:
 
 tasks:
   - name: start
-    command: confluent local services start
+    command: confluent local services start && gp sync-done start
+  - name: datagen
+    command: |
+      gp sync-await start
+      
+      curl -i -X PUT -H "Content-Type:application/json" \
+        http://localhost:8083/connectors/users/config \
+        -d '{
+           'connector.class' = 'io.confluent.kafka.connect.datagen.DatagenConnector',
+           'kafka.topic' = 'stockapp.users',
+           'quickstart' = 'Users_',
+           'max.interval' = '8000'
+           'tasks.max' = '1'
+          }'
+          
+      curl -i -X PUT -H "Content-Type:application/json" \
+        http://localhost:8083/connectors/trades/config \
+        -d '{
+          'connector.class' = 'io.confluent.kafka.connect.datagen.DatagenConnector',
+          'kafka.topic' = 'stockapp.trades',
+          'quickstart' = 'Stock_Trades',
+          'max.interval' = '3000',
+          'tasks.max' = '1'
+          }'
 
 ports:
   # zookeeper
