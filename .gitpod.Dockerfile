@@ -2,7 +2,7 @@ FROM gitpod/workspace-full
 ARG CONFLUENT_VERSION=6.2.1
 
 # Install Confluent CLI and Confluent Cloud CLI
-RUN $(cd /home/gitpod curl -O http://packages.confluent.io/archive/6.2/confluent-${CONFLUENT_VERSION}.zip) && \
+RUN $(cd /home/gitpod curl -O http://packages.confluent.io/archive/6.2/confluent-${CONFLUENT_VERSION}.zip && unzip confluent-${CONFLUENT_VERSION}.zip) && \
     curl -L --http1.1 https://cnfl.io/ccloud-cli | sudo sh -s -- -b /usr/local/bin && \
     mkdir -p ~/.local/share/bash-completion/ && \
     touch ~/.local/share/bash-completion/ccloud && \
