@@ -2,7 +2,7 @@ FROM gitpod/workspace-full
 ARG CONFLUENT_VERSION=6.2.1
 ARG CONFLUENT_VERSION_SHORT=6.2
 
-RUN echo ${PWD}
+ENV CONFLUENT_HOME=/home/gitpod/confluent-${CONFLUENT_VERSION}
 # Install Confluent CLI and Confluent Cloud CLI, with shell auto completion
 RUN curl -O https://packages.confluent.io/archive/${CONFLUENT_VERSION_SHORT}/confluent-${CONFLUENT_VERSION}.zip && \
     unzip confluent-${CONFLUENT_VERSION}.zip && \
