@@ -8,7 +8,7 @@ RUN $(cd /home/gitpod curl -O http://packages.confluent.io/archive/6.2/confluent
     touch ~/.local/share/bash-completion/ccloud && \
     ccloud completion bash > ~/.local/share/bash-completion/ccloud && \
     touch ~/.local/share/bash-completion/confluent && \
-    confluent completion bash > ~/.local/share/bash-completion/confluent && \
+    /home/gitpod/confluent-${CONFLUENT_VERSION}/bin/confluent completion bash > ~/.local/share/bash-completion/confluent && \
     echo "source ~/.local/share/bash-completion/ccloud" >> ~/.bashrc && \
     echo "source ~/.local/share/bash-completion/confluent" >> ~/.bashrc && \
     echo "export PATH=/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH" >> ~/.bashrc
