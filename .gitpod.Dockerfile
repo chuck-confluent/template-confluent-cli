@@ -17,7 +17,8 @@ RUN curl -L --http1.1 https://cnfl.io/ccloud-cli | sudo sh -s -- -b /usr/local/b
     ccloud completion bash > ~/.local/share/bash-completion/ccloud && \
     touch ~/.local/share/bash-completion/confluent && \
     echo "source ~/.local/share/bash-completion/ccloud" >> ~/.bashrc
-ENV PATH=${JAVA_HOME}/bin:/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH
+RUN echo $JAVA_HOME
+ENV PATH=$JAVA_HOME/bin:/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH
 RUN echo $PATH
 # Install datagen connector
 RUN confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:0.5.2
