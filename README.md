@@ -32,3 +32,7 @@ Here are a few of the most helpful Gitpod docs when you want to create your own 
 
 If you want to dig into the different workspace images Gitpod offers, see
 - https://github.com/gitpod-io/workspace-images
+
+Different Confluent examples that use Docker Compose:
+- A Kafka tutorial: https://github.com/chuck-alt-delete/kafka-tutorial-with-gitpod (relatively simple)
+- CP Demo: https://github.com/confluentinc/cp-demo/blob/6.2.1-post/.gitpod.yml (more complex)
