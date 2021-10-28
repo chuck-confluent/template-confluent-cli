@@ -13,3 +13,22 @@ Template repo for a lab environment with confluent and ccloud CLIs installed. Th
 - On launch, two datagen source connectors are automatically started
 
 What other features would you like to see? File an issue or make a pull request.
+
+## Video Demonstration
+
+[![video demo of confluent cloud based labs using gitpod](https://img.youtube.com/vi/zKdSxNIPv50_0/0.jpg)](https://youtu.be/zKdSxNIPv50_0)
+
+## Gitpod Docs
+
+Here are a few of the most helpful Gitpod docs when you want to create your own labs:
+- https://www.gitpod.io/docs/getting-started
+- .gitpod.yml, where the gitpod magic happens: https://www.gitpod.io/docs/config-gitpod-file
+  - full reference: https://www.gitpod.io/docs/references/gitpod-yml
+- Prebuilds https://www.gitpod.io/docs/prebuilds
+  - especially this diagram that shows what tasks run on prebuild vs on launch: https://www.gitpod.io/docs/config-start-tasks#prebuild-and-new-workspaces
+- Using a custom docker image: https://www.gitpod.io/docs/config-docker#custom-docker-image
+- Reference for the `gp` CLI tool: https://www.gitpod.io/docs/command-line-interface
+  - this CLI is used for things like synchronizing tasks, setting secure user-level environment variables, getting information about the workspace, etc
+
+If you want to dig into the different workspace images Gitpod offers, see
+- https://github.com/gitpod-io/workspace-images
