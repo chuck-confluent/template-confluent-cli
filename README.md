@@ -16,7 +16,7 @@ What other features would you like to see? File an issue or make a pull request.
 
 ## Video Demonstration
 
-[![video demo of confluent cloud based labs using gitpod](https://img.youtube.com/vi/zKdSxNIPv50_0/0.jpg)](https://youtu.be/zKdSxNIPv50_0)
+[![video demo of confluent cloud based labs using gitpod](https://img.youtube.com/vi/zKdSxNIPv50/0.jpg)](https://youtu.be/zKdSxNIPv50_0)
 
 ## Gitpod Docs
 
