@@ -70,5 +70,5 @@ ports:
     
   # Confluent Control Center
   - port: 9021
-    onOpen: notify
+    onOpen: open-preview
     visibility: public
