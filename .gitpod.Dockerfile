@@ -1,23 +1,23 @@
 FROM gitpod/workspace-full
-ARG CONFLUENT_VERSION=6.2.1
+
 ARG CONFLUENT_VERSION_SHORT=6.2
+ARG CONFLUENT_VERSION=${CONFLUENT_VERSION_SHORT}}.1
 
 ENV CONFLUENT_HOME=/home/gitpod/confluent-${CONFLUENT_VERSION}
-SHELL ["/bin/bash", "-c"] 
+SHELL ["/bin/bash", "-c"]
 
-# Install Confluent CLI and Confluent Cloud CLI, with shell auto completion
+# Enable bash completion and update PATH in bash profile
 RUN mkdir -p ~/.local/share/bash-completion/ && \
-    echo "export PATH=/home/gitpod/.sdkman/candidates/java/current/bin:/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH" >> ~/.bashrc
-RUN curl -O https://packages.confluent.io/archive/${CONFLUENT_VERSION_SHORT}/confluent-${CONFLUENT_VERSION}.zip && \
-    unzip confluent-${CONFLUENT_VERSION}.zip && \
     echo "source ~/.local/share/bash-completion/confluent" >> ~/.bashrc && \
+    echo "export PATH=/home/gitpod/.sdkman/candidates/java/current/bin:/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH" >> ~/.bashrc
+
+# Install Confluent Platform
+RUN curl -O https://packages.confluent.io/archive/${CONFLUENT_VERSION_SHORT}/confluent-${CONFLUENT_VERSION}.zip && \
+    unzip confluent-${CONFLUENT_VERSION}.zip
+
+# We install the confluent CLI separately from CP since v2.0 won't be available until CP 7.1. Also enable bash tab completion.
+RUN curl -sL --http1.1 https://cnfl.io/cli | sh -s -- -b /home/gitpod/confluent-${CONFLUENT_VERSION}/bin/ v2.0.0 && \
     /home/gitpod/confluent-${CONFLUENT_VERSION}/bin/confluent completion bash > ~/.local/share/bash-completion/confluent
-RUN curl -L --http1.1 https://cnfl.io/ccloud-cli | sudo sh -s -- -b /usr/local/bin && \
-    touch ~/.local/share/bash-completion/ccloud && \
-    ccloud completion bash > ~/.local/share/bash-completion/ccloud && \
-    touch ~/.local/share/bash-completion/confluent && \
-    echo "source ~/.local/share/bash-completion/ccloud" >> ~/.bashrc
-ENV PATH=/home/gitpod/.sdkman/candidates/java/current/bin:/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH
-RUN echo $PATH
+
 # Install datagen connector
 RUN /home/gitpod/confluent-${CONFLUENT_VERSION}/bin/confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:0.5.2
