@@ -5,7 +5,7 @@ Template repo for a lab environment with confluent and ccloud CLIs installed. Th
 
 ## Create a New Repo from Template
 
-1. Click "Use as Template"
+1. Click "Use this Template" to create a new repo
 2. Change the URL for the "Open in Gitpod" button above
 
 ## Features
