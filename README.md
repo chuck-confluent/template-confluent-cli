@@ -3,6 +3,11 @@ Template repo for a lab environment with confluent and ccloud CLIs installed. Th
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/chuck-confluent/template-confluent-cli)
 
+## Create a New Repo from Template
+
+1. Click "Use as Template"
+2. Change the URL for the "Open in Gitpod" button above
+
 ## Features
 
 - Uses Gitpod's default "workspace-full" ubuntu workspace, which includes [a lot of stuff](https://github.com/gitpod-io/workspace-images/blob/master/full/Dockerfile)
