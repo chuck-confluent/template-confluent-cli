@@ -14,32 +14,30 @@ github:
 image:
   file: .gitpod.Dockerfile
 
-tasks:
-  - name: start
-    command: confluent local services start && gp sync-done start
-  - name: datagen
-    command: |
-      gp sync-await start
+# Uncomment to run tasks
+# tasks:
+
+  # Uncomment task if you want to start services on launch
+  # - name: start
+  #   command: confluent local services start && gp sync-done start
+
+  # Uncomment task if you want to create datagen connectors on launch
+  # - name: datagen
+  #   command: |
+  #     gp sync-await start
       
-      curl -i -X PUT -H "Content-Type:application/json" \
-        http://localhost:8083/connectors/users/config \
-        -d '{
-           "connector.class" : "io.confluent.kafka.connect.datagen.DatagenConnector",
-           "kafka.topic" : "stockapp.users",
-           "quickstart" : "Users_",
-           "max.interval" : "8000",
-           "tasks.max" : "1"
-          }'
+  #     curl -i -X PUT -H "Content-Type:application/json" \
+  #       http://localhost:8083/connectors/users/config \
+  #       -d @connectors/connector-datagen-users.json
           
-      curl -i -X PUT -H "Content-Type:application/json" \
-        http://localhost:8083/connectors/trades/config \
-        -d '{
-           "connector.class" : "io.confluent.kafka.connect.datagen.DatagenConnector",
-           "kafka.topic" : "stockapp.trades",
-           "quickstart" : "Stock_Trades",
-           "max.interval" : "8000",
-           "tasks.max" : "1" 
-          }'
+  #     curl -i -X PUT -H "Content-Type:application/json" \
+  #       http://localhost:8083/connectors/trades/config \
+  #       -d @connectors/connector-datagen-trades.json
+
+  # Uncomment task if you want to log into a confluent cloud cluster.
+  # Must have $CONFLUENT_CLOUD_EMAIL, CONFLUENT_CLOUD_PASSWORD, and $CCLOUD_ENV_ID defined in gitpod.io/variables and scoped to this repo
+  # - name: ccloud
+  #   command: confluent login --save && confluent environment use $CCLOUD_ENV_ID
 
 ports:
   # zookeeper
