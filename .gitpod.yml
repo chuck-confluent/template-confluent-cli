@@ -14,25 +14,22 @@ github:
 image:
   file: .gitpod.Dockerfile
 
-# Uncomment to run tasks
-# tasks:
+tasks:
 
-  # Uncomment task if you want to start services on launch
-  # - name: start
-  #   command: confluent local services start && gp sync-done start
+  - name: start
+    command: confluent local services start && gp sync-done start
 
-  # Uncomment task if you want to create datagen connectors on launch
-  # - name: datagen
-  #   command: |
-  #     gp sync-await start
+  - name: datagen
+    command: |
+      gp sync-await start
       
-  #     curl -i -X PUT -H "Content-Type:application/json" \
-  #       http://localhost:8083/connectors/users/config \
-  #       -d @connectors/connector-datagen-users.json
+      curl -i -X PUT -H "Content-Type:application/json" \
+        http://localhost:8083/connectors/users/config \
+        -d @connectors/connector-datagen-users.json
           
-  #     curl -i -X PUT -H "Content-Type:application/json" \
-  #       http://localhost:8083/connectors/trades/config \
-  #       -d @connectors/connector-datagen-trades.json
+      curl -i -X PUT -H "Content-Type:application/json" \
+        http://localhost:8083/connectors/trades/config \
+        -d @connectors/connector-datagen-trades.json
 
   # Uncomment task if you want to log into a confluent cloud cluster.
   # Must have $CONFLUENT_CLOUD_EMAIL, CONFLUENT_CLOUD_PASSWORD, and $CCLOUD_ENV_ID defined in gitpod.io/variables and scoped to this repo
