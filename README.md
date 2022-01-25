@@ -16,6 +16,7 @@ Template repo for a lab environment with confluent and ccloud CLIs installed. Th
 - Confluent Platform installed at /home/gitpod/confluent-${CONFLUENT_VERSION}, with all binaries in PATH (e.g. kafka-console-producer, perf tests, kafka-cluster-links, etc)
 - On launch, `confluent local services start` starts all confluent services
 - On launch, two datagen source connectors are automatically started
+- On launch, Confluent Control Center opens
 
 What other features would you like to see? File an issue or make a pull request.
 
