@@ -1,7 +1,7 @@
 FROM gitpod/workspace-full
 
-ARG CONFLUENT_VERSION_SHORT=7.0
-ARG CONFLUENT_VERSION=${CONFLUENT_VERSION_SHORT}.0
+ARG CONFLUENT_VERSION_SHORT=7.2
+ARG CONFLUENT_VERSION=${CONFLUENT_VERSION_SHORT}.1
 
 ENV CONFLUENT_HOME=/home/gitpod/confluent-${CONFLUENT_VERSION}
 SHELL ["/bin/bash", "-c"]
@@ -16,9 +16,9 @@ RUN curl -O https://packages.confluent.io/archive/${CONFLUENT_VERSION_SHORT}/con
     unzip confluent-${CONFLUENT_VERSION}.zip
 
 # We install the confluent CLI separately from CP since v2.0 won't be available until CP 7.1. Also enable bash tab completion.
-RUN curl -sL --http1.1 https://cnfl.io/cli | sh -s -- -b /home/gitpod/confluent-${CONFLUENT_VERSION}/bin/ v2.5.0 && \
-    /home/gitpod/confluent-${CONFLUENT_VERSION}/bin/confluent completion bash > ~/.local/share/bash-completion/confluent
+RUN /home/gitpod/confluent-${CONFLUENT_VERSION}/bin/confluent completion bash > ~/.local/share/bash-completion/confluent
 
 ENV PATH=/home/gitpod/.sdkman/candidates/java/current/bin:/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH
+
 # Install datagen connector
-RUN confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:0.5.2
+RUN confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:0.5.3
