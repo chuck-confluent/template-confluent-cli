@@ -15,7 +15,7 @@ RUN mkdir -p ~/.local/share/bash-completion/ && \
 RUN curl -O https://packages.confluent.io/archive/${CONFLUENT_VERSION_SHORT}/confluent-${CONFLUENT_VERSION}.zip && \
     unzip confluent-${CONFLUENT_VERSION}.zip
 
-Enable bash tab completion.
+# Enable bash tab completion.
 RUN /home/gitpod/confluent-${CONFLUENT_VERSION}/bin/confluent completion bash > ~/.local/share/bash-completion/confluent
 
 ENV PATH=/home/gitpod/.sdkman/candidates/java/current/bin:/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH
