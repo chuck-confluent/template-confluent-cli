@@ -15,7 +15,7 @@ RUN mkdir -p ~/.local/share/bash-completion/ && \
 RUN curl -O https://packages.confluent.io/archive/${CONFLUENT_VERSION_SHORT}/confluent-${CONFLUENT_VERSION}.zip && \
     unzip confluent-${CONFLUENT_VERSION}.zip
 
-# We install the confluent CLI separately from CP since v2.0 won't be available until CP 7.1. Also enable bash tab completion.
+Enable bash tab completion.
 RUN /home/gitpod/confluent-${CONFLUENT_VERSION}/bin/confluent completion bash > ~/.local/share/bash-completion/confluent
 
 ENV PATH=/home/gitpod/.sdkman/candidates/java/current/bin:/home/gitpod/confluent-${CONFLUENT_VERSION}/bin:$PATH
